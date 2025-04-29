@@ -23,15 +23,6 @@
 			<id>svetlana</id>
 			<name>Sotnicova Svetlana</name>
 		</developer>
-		<developer>
-			<id>nadejda</id>
-			<name>Anisimova Nadejda</name>
-		</developer>
-		<developer>
-			<id>anastasia</id>
-			<name>Bass Anastasia</name>
-		</developer>
-		<developer/>
 	</developers>
 	<scm>
 		<connection/>
