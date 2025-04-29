@@ -1,7 +1,7 @@
 services:
   - type: web
     name: tinder-backend
-    env: java
+    env: docker
     plan: free
     branch: master
     buildCommand: "./mvnw clean package -DskipTests"
