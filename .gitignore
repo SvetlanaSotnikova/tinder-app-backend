@@ -1,7 +1,4 @@
 HELP.md
-.mvn
-.gitattributes
-mvnw
 /idea/compiler.xml
 /idea/jarRepositories.xml
 /idea/misc.xml
