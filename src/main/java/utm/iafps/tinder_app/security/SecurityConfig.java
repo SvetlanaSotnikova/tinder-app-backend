@@ -15,11 +15,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/", "/index", "/index.html").permitAll()
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/profile/**").permitAll()
                         .requestMatchers("/recommendations/**").permitAll()
                         .requestMatchers("/likes/**").permitAll()
+                        .requestMatchers("/**").permitAll() // временно, пока не добавлен frontend
                         .anyRequest().authenticated()
                 );
 
