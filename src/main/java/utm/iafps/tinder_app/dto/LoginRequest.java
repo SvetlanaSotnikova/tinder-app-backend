@@ -1,0 +1,13 @@
+package utm.iafps.tinder_app.dto;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+public class LoginRequest {
+    @NotNull
+    private String username;
+    @NotNull
+    private String password;
+}

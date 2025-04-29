@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-d08ara7diees7394lms0-a.frankfurt-postgres.render.com/tinderdb_qtz4?sslmode=require
+    username: tinderdb_qtz4_user
+    password: pq6BAYAHJSuYb4DfOxIu9sGuIcqV3Q47
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
