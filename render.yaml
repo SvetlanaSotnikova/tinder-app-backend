@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: tinder-backend
+    env: java
+    plan: free
+    branch: master
+    buildCommand: "./mvnw clean package -DskipTests"
+    startCommand: "java -jar target/*.jar"
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://dpg-d08ara7diees7394lms0-a.frankfurt-postgres.render.com:5432/tinderdb_qtz4?sslmode=require
+      - key: SPRING_DATASOURCE_USERNAME
+        value: tinderdb_qtz4_user
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: pq6BAYAHJSuYb4DfOxIu9sGuIcqV3Q47
+      - key: SERVER_PORT
+        value: 8080
