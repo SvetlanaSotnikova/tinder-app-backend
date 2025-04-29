@@ -1,8 +1,10 @@
 HELP.md
+.mvn
+.gitattributes
+mvnw
 /idea/compiler.xml
 /idea/jarRepositories.xml
 /idea/misc.xml
-/pom.xml
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
