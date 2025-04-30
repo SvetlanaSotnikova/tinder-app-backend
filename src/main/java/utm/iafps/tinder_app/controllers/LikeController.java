@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import utm.iafps.tinder_app.dto.LikeRequest;
+import utm.iafps.tinder_app.dto.LikeResponse;
 import utm.iafps.tinder_app.models.Like;
 import utm.iafps.tinder_app.services.LikeService;
 
@@ -23,7 +24,11 @@ public class LikeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Like>> getAllLikes(@RequestParam String username) {
-        return ResponseEntity.ok(likeService.getLikes(username));
+    public ResponseEntity<List<LikeResponse>> getAllLikes(@RequestParam String username) {
+        List<Like> likes = likeService.getLikes(username);
+        List<LikeResponse> responses = likes.stream()
+                .map(like -> new LikeResponse(like.getLikedUser().getUsername()))
+                .toList();
+        return ResponseEntity.ok(responses);
     }
 }
