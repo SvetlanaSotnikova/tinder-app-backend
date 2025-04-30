@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d08ara7diees7394lms0-a.frankfurt-postgres.render.com/tinderdb_qtz4?sslmode=require
-    username: tinderdb_qtz4_user
-    password: pq6BAYAHJSuYb4DfOxIu9sGuIcqV3Q47
+    url: jdbc:postgresql://localhost:5432/tinderdb
+    username: postgres
+    password: 123
     driver-class-name: org.postgresql.Driver
 
   jpa:
