@@ -29,4 +29,15 @@ public class ProfileController {
         return ResponseEntity.ok(profile);
     }
 
+//    @PostMapping("/upload-avatar")
+//    public ResponseEntity<String> uploadAvatar(@RequestParam String username,
+//                                               @RequestParam MultipartFile file) {
+//        String filename = fileStorageService.store(file, username); // реализуем ниже
+//        String url = "/uploads/" + filename;
+//
+//        profileService.updateAvatarUrl(username, url);
+//        return ResponseEntity.ok(url);
+//    }
+
+
 }

@@ -42,4 +42,7 @@ public class Profile {
     @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 
+    @Column(name = "avatar_url")
+    private String avatarUrl;
+
 }

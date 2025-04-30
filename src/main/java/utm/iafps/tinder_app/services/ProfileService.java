@@ -28,6 +28,7 @@ public class ProfileService {
             existingProfile.setCity(request.getCity());
             existingProfile.setInterests(request.getInterests());
             existingProfile.setInterests(request.getInterests());
+            existingProfile.setAvatarUrl(request.getAvatarUrl());
             profileRepository.save(existingProfile);
         } else {
             Profile profile = Profile.builder()
@@ -37,6 +38,7 @@ public class ProfileService {
                     .city(request.getCity())
                     .interests(request.getInterests())
                     .hobbies(request.getHobbies())
+                    .avatarUrl(request.getAvatarUrl())
                     .user(user)
                     .build();
             profileRepository.save(profile);
@@ -60,8 +62,18 @@ public class ProfileService {
                 profile.getCountry(),
                 profile.getCity(),
                 profile.getInterests(),
-                profile.getHobbies()
+                profile.getHobbies(),
+                profile.getAvatarUrl()
         );
+    }
+    public void updateAvatarUrl(String username, String avatarUrl) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Profile profile = user.getProfile();
+        if (profile == null) throw new RuntimeException("Profile not found");
+
+        profile.setAvatarUrl(avatarUrl);
+        profileRepository.save(profile);
     }
 
 }

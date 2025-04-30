@@ -26,13 +26,16 @@ public class ProfileRequest {
     @NotNull
     private List<String> hobbies;
 
+    private String avatarUrl;
+
     public ProfileRequest(int age, Gender gender, Country country, String city,
-                          List<String> interests, List<String> hobbies) {
+                          List<String> interests, List<String> hobbies, String avatarUrl) {
         this.age = age;
         this.gender = gender;
         this.country = country;
         this.city = city;
         this.interests = interests;
         this.hobbies = hobbies;
+        this.avatarUrl = avatarUrl;
     }
 }
