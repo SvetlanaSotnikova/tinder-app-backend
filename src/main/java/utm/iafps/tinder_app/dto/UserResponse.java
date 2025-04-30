@@ -11,4 +11,5 @@ public class UserResponse {
     private Integer age;
     private String city;
     private String country;
+    private String avatarUrl;
 }

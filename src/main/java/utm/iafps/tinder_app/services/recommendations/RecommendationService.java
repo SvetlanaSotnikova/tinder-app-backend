@@ -61,7 +61,8 @@ public class RecommendationService {
                 Optional.ofNullable(profile)
                         .map(Profile::getCountry)
                         .map(Enum::name)
-                        .orElse(null)
+                        .orElse(null),
+                Optional.ofNullable(profile).map(Profile::getAvatarUrl).orElse(null)
         );
     }
 
