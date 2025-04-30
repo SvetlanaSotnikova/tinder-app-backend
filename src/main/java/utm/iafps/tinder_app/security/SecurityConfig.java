@@ -19,6 +19,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/index", "/index.html").permitAll()
+                        .requestMatchers("/avatar/**").permitAll()
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/profile/**").permitAll()
                         .requestMatchers("/recommendations/**").permitAll()
