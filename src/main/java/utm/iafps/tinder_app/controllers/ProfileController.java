@@ -16,7 +16,7 @@ public class ProfileController {
      * Временная реализация: передаём username через query param,
      * в будущем заменим на получение из JWT
      */
-    @PostMapping("setup")
+    @PostMapping("/setup")
     public ResponseEntity<String> setupProfile(@RequestParam String username,
                                                @RequestBody @Valid ProfileRequest request) {
         profileService.saveProfile(username, request);
