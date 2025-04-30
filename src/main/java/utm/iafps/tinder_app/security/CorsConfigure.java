@@ -14,7 +14,7 @@ public class CorsConfigure {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173/**") // для фронта
+                        .allowedOrigins("http://localhost:5173") // для фронта
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
