@@ -4,8 +4,8 @@ server:
 app:
   backend-url: http://localhost:8080
 
-#jwt:
-#  secret: ${JWT_SECRET}
+jwt:
+  secret: ${JWT_SECRET}
 
 spring:
   datasource:
@@ -18,19 +18,19 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-  mail:
-    host: smtp.mailtrap.io
-    port: 587
-    #    username: ${MAIL_USERNAME}
-    #    password: ${MAIL_PASSWORD}
-    username: your_mailtrap_username
-    password: your_mailtrap_password
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+#  mail:
+#    host: smtp.mailtrap.io
+#    port: 587
+#    #    username: ${MAIL_USERNAME}
+#    #    password: ${MAIL_PASSWORD}
+#    username: your_mailtrap_username
+#    password: your_mailtrap_password
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
 
 
 

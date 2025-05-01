@@ -44,7 +44,7 @@ public class AuthService {
 
         verificationTokenRepository.save(verificationToken);
 
-        emailService.sendVerificationEmail(user.getEmail(), token);
+//        emailService.sendVerificationEmail(user.getEmail(), token);
     }
 
 
