@@ -17,12 +17,6 @@ import java.util.List;
 public class LikeController {
     private final LikeService likeService;
 
-//    @PostMapping
-//    public ResponseEntity<String> likeUser(@RequestBody @Valid LikeRequest likeRequest) {
-//        likeService.likeUser(likeRequest.getUsername(), likeRequest.getLikedUsername());
-//        return ResponseEntity.ok("Successfully liked user ");
-//    }
-
     @PostMapping
     public ResponseEntity<String> toggleLike(@RequestBody @Valid LikeRequest likeRequest) {
         likeService.toggleLike(likeRequest.getUsername(), likeRequest.getLikedUsername());
