@@ -14,12 +14,9 @@ import utm.iafps.tinder_app.utils.Gender;
 @RequiredArgsConstructor
 public class ProfileService {
     private final ProfileRepository profileRepository;
-    private final UserRepository userRepository;
 
-    public void saveProfile(String username, ProfileRequest request) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(()-> new RuntimeException("User not found"));
-        Profile existingProfile  = user.getProfile();
+    public void saveProfile(User user, ProfileRequest request) {
+        Profile existingProfile = user.getProfile();
 
         if (existingProfile != null) {
             existingProfile.setAge(request.getAge());
@@ -47,10 +44,7 @@ public class ProfileService {
 
     }
 
-    public ProfileRequest getProfile(String username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
+    public ProfileRequest getProfile(User user) {
         Profile profile = user.getProfile();
         if (profile == null) {
             throw new RuntimeException("Profile not found");
@@ -66,9 +60,8 @@ public class ProfileService {
                 profile.getAvatarUrl()
         );
     }
-    public void updateAvatarUrl(String username, String avatarUrl) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+
+    public void updateAvatarUrl(User user, String avatarUrl) {
         Profile profile = user.getProfile();
         if (profile == null) throw new RuntimeException("Profile not found");
 

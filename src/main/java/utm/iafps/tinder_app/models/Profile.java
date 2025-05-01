@@ -28,12 +28,12 @@ public class Profile {
     private Country country; // для DBSCAN
     private String city; // для DBSCAN
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "profile_interests", joinColumns = @JoinColumn(name = "profile_id"))
     @Column(name = "interests")
     private List<String> interests;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "profile_hobbies", joinColumns = @JoinColumn(name = "profile_id"))
     @Column(name = "hobbies")
     private List<String> hobbies;
@@ -42,7 +42,7 @@ public class Profile {
     @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 
-    @Column(name = "avatar_url")
+    @Column(name = "avatar_url", columnDefinition = "TEXT")
     private String avatarUrl;
 
 }

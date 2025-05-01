@@ -3,8 +3,13 @@ package utm.iafps.tinder_app.controllers;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import utm.iafps.tinder_app.dto.ProfileRequest;
+import utm.iafps.tinder_app.dto.UserResponse;
+import utm.iafps.tinder_app.models.Profile;
+import utm.iafps.tinder_app.models.User;
+import utm.iafps.tinder_app.security.CustomUserDetails;
 import utm.iafps.tinder_app.services.ProfileService;
 
 @RestController
@@ -12,32 +17,20 @@ import utm.iafps.tinder_app.services.ProfileService;
 @RequiredArgsConstructor
 public class ProfileController {
     private final ProfileService profileService;
-    /**
-     * Временная реализация: передаём username через query param,
-     * в будущем заменим на получение из JWT
-     */
+
     @PostMapping
-    public ResponseEntity<String> setupProfile(@RequestParam String username,
+    public ResponseEntity<String> setupProfile(@AuthenticationPrincipal CustomUserDetails userDetails,
                                                @RequestBody @Valid ProfileRequest request) {
-        profileService.saveProfile(username, request);
+        profileService.saveProfile(userDetails.getUser(), request);
         return ResponseEntity.ok("Profile setup successful");
     }
 
     @GetMapping
-    public ResponseEntity<ProfileRequest> getProfile(@RequestParam String username) {
-        ProfileRequest profile = profileService.getProfile(username);
+    public ResponseEntity<ProfileRequest> getProfile(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        ProfileRequest profile = profileService.getProfile(userDetails.getUser());
         return ResponseEntity.ok(profile);
     }
 
-//    @PostMapping("/upload-avatar")
-//    public ResponseEntity<String> uploadAvatar(@RequestParam String username,
-//                                               @RequestParam MultipartFile file) {
-//        String filename = fileStorageService.store(file, username); // реализуем ниже
-//        String url = "/uploads/" + filename;
-//
-//        profileService.updateAvatarUrl(username, url);
-//        return ResponseEntity.ok(url);
-//    }
 
 
 }

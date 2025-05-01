@@ -15,9 +15,7 @@ public class LikeService {
     private final LikeRepository likeRepository;
     private final UserRepository userRepository;
 
-    public void likeUser(String username, String likedUsername) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    public void likeUser(User user, String likedUsername) {
         User likedUser = userRepository.findByUsername(likedUsername)
                 .orElseThrow(() -> new RuntimeException("Liked user not found"));
 
@@ -29,18 +27,11 @@ public class LikeService {
         likeRepository.save(like);
     }
 
-    public List<Like> getLikes(String username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
+    public List<Like> getLikes(User user) {
         return likeRepository.findByUser(user);
     }
 
-    public void toggleLike(String username, String likedUsername) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        User likedUser = userRepository.findByUsername(likedUsername)
-                .orElseThrow(() -> new RuntimeException("Liked user not found"));
+    public void toggleLike(User user, User likedUser) {
 
         Like existingLike = likeRepository.findByUserAndLikedUser(user, likedUser);
         if (existingLike != null) {
