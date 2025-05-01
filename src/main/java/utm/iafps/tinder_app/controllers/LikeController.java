@@ -33,7 +33,6 @@ public class LikeController {
         return ResponseEntity.ok("Like toggled");
     }
 
-
     @GetMapping
     public ResponseEntity<List<LikeResponse>> getAllLikes(@AuthenticationPrincipal CustomUserDetails userDetails) {
         User user = userDetails.getUser();
