@@ -24,6 +24,8 @@ public class User {
     private String password;
     @Column(unique = true, nullable = false)
     private String email;
+    @Column(nullable = false)
+    private boolean enabled = false;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Profile profile;
