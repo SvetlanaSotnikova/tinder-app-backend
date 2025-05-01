@@ -35,4 +35,23 @@ public class LikeService {
 
         return likeRepository.findByUser(user);
     }
+
+    public void toggleLike(String username, String likedUsername) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        User likedUser = userRepository.findByUsername(likedUsername)
+                .orElseThrow(() -> new RuntimeException("Liked user not found"));
+
+        Like existingLike = likeRepository.findByUserAndLikedUser(user, likedUser);
+        if (existingLike != null) {
+            likeRepository.delete(existingLike);
+        } else {
+            Like like = Like.builder()
+                    .user(user)
+                    .likedUser(likedUser)
+                    .build();
+            likeRepository.save(like);
+        }
+
+    }
 }
